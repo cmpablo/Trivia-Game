@@ -81,26 +81,26 @@ $(document).ready(function() {
 
   // Functions
 
-function initScreen() {
-    $("#start-btn").on("click", function(){
-        askQuestion();
+  function initScreen() {
+    $("#start-btn").on("click", function() {
+      askQuestion();
     });
     $(".question-panel").hide();
     $(".results-panel").hide();
-}
+  }
 
   function askQuestion() {
+    $("#startbtn").hide();
+    $(".question-panel").show();
+    $(".results-panel").show();
+
     if (questionIndex <= questions.length - 1) {
       question.textContent = questions[questionIndex].q;
     } else {
       // go to game over screen
       $("#ans-correct").textContent = rightAnswer;
     }
-    $("#startbtn").hide();
-    $(".question-panel").show();
-    $(".results-panel").show();
   }
-
 
   initScreen();
 });
