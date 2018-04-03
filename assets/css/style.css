@@ -1,0 +1,6 @@
+body {
+  font-family: "Work Sans", sans-serif;
+  /* font-family: "Mina", sans-serif; */
+  background-image: url("../images/bg_cubes.png");
+  line-height: 1.6;
+}
