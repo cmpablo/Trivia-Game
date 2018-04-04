@@ -14,7 +14,7 @@
 
 // Final screen shows # of correct answers, # of incorrect answers, and an option to restart (without relaoding page)... also remove time remaining so it doesn't show
 $(document).ready(function() {
-  // variables  
+  // variables
   var q1 = {
     question: "What did the license plate say on the Ghostbusters' car?",
     options: ["ECTO-1", "GHOST-1", "SLIME-1", "GBUST-1"],
@@ -50,7 +50,7 @@ $(document).ready(function() {
     answer: "Bad"
   };
 
-  var q6= {
+  var q6 = {
     question: "Who had a #1 hit with West End Girls?",
     options: ["Depeche Mode", "Erasure", "The Pet Shop Boys", "New Order"],
     flag: [false, false, true, false],
@@ -59,7 +59,7 @@ $(document).ready(function() {
 
   var q7 = {
     question: "Which 80s cartoon bears bounced here and there and everywhere?",
-    options: ["Care Bears", "Gummi Bears", "Berenstain Bears", "Chicago Bears"], 
+    options: ["Care Bears", "Gummi Bears", "Berenstain Bears", "Chicago Bears"],
     flag: [false, true, false, false],
     answer: "Gummi Bears"
   };
@@ -69,32 +69,75 @@ $(document).ready(function() {
   var count = 0;
   var intervalId;
 
-  // Timer
+  // Timer object
+  var myTimer = {
+    time: 20,
+    reset: function() {
+      myTimer.time = 20;
+      $("#time-remain").text("00:20");
+    },
+
+    start: function() {
+      intervalId = setInterval(myTimer.count, 1000);
+    },
+
+    stop: function() {
+      clearInterval(intervalId);
+    },
+
+    count: function() {
+      myTimer.time--;
+      //console.log(myTimer.time);
+      var converted = myTimer.timeConverter(myTimer.time);
+      $("#time-remain").text(converted);
+    },
+
+    timeConverter: function(t) {
+      var minutes = Math.floor(t / 60);
+      var seconds = t - minutes * 60;
+
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+
+      if (minutes === 0) {
+        minutes = "00";
+      }
+      return minutes + ":" + seconds;
+    }
+  };
 
   // Functions
-
-  function initScreen() {
+  function reset() {
     $("#start-btn").click(startQuiz);
     $(".question-panel").hide();
     $(".results-panel").hide();
   }
 
   function startQuiz() {
+    myTimer.start();
     $("#ask-question").html(q1.question);
     $("#button-01").text(q1.options[0]);
     $("#button-02").text(q1.options[1]);
     $("#button-03").text(q1.options[2]);
     $("#button-04").text(q1.options[3]);
-    
 
     $("#start-btn").hide();
     $(".question-panel").show();
   }
 
-  function nextQuestion() {
-  
+  function nextQuestion() {}
+
+
+  // Score keepers
+  function goodAnswer() {
+    rightAnswer++;
+  }
+
+  function badAnswer() {
+    wrongAnswer++;
   }
 
   // calling functions to start game
-  initScreen();
+  reset();
 });
