@@ -1,106 +1,100 @@
-// Create onClick function to start game (need start screen)
-
-// Create timer to display each question
+// Create function to display each question
 
 // If question is answered correctly, display a congrats screen. After a few seconds, display next question.
 //              - create function for congrats screen with timer to display next question
+//              - clear timer on button click
 
 // If question is answered wrong, display a wrong answer screen with correct answer. After a few seconds, display next question.
 //              - create function for wrong answer screen with timer to display next question
+//              - clear timer on button click
 
 // If timer runs out before question is answered, display a time's up screen with correct answer. After a few seconds, display next question.
 //              - create function for times up screen with time to display next question
+//              - clear timer when time runs out
 
 // Final screen shows # of correct answers, # of incorrect answers, and an option to restart (without relaoding page)... also remove time remaining so it doesn't show
 $(document).ready(function() {
-  var questions = [
-    {
-      q: "What did the license plate say on the Ghostbusters' car?",
-      a: "ECTO-1",
-      wrong: ["GHOST-1", "SLIME-1", "GBUST-1"]
-    },
-    {
-      q: "Which sci-fi sitcom star liked to eat cats?",
-      a: "Alf",
-      wrong: ["Mork", "Vicki", "Evie"]
-    },
-    {
-      q: "What 80s game show featured the Whammy?",
-      a: "Press Your Luck",
-      wrong: ["Family Feud", "Pyramid", "Sale of the Century"]
-    },
-    {
-      q: "Who was the host of Double Dare?",
-      a: "Marc Summers",
-      wrong: ["Alex Trebek", "Chuck Woolery", "Pat Sajak"]
-    },
-    {
-      q: "What was the name of the talking car in Knight Rider?",
-      a: "KITT",
-      wrong: ["KATT", "CHAT", "KIFT"]
-    },
-    {
-      q: "Which all-girl group walked like an Egyptian over an eternal flame?",
-      a: "The Bangles",
-      wrong: ["The Go-Gos", "Bananarama", "En Vogue"]
-    },
-    {
-      q: "Which of these video games was not introduced in the 1980s?",
-      a: "Snake",
-      wrong: ["Frogger", "Digger", "Pac-Man"]
-    },
-    {
-      q: "In which video did Michael Jackson ask Prince to appear?",
-      a: "Bad",
-      wrong: ["Billie Jean", "Beat It", "Smooth Criminal"]
-    },
-    {
-      q: "Which of these toys made its debut in the 80s?",
-      a: "Strawberry Shortcake",
-      wrong: ["G.I. Joe", "Troll Doll", "Suzy Homemaker"]
-    },
-    {
-      q: "Who had a #1 hit with West End Girls?",
-      a: "The Pet Shop Boys",
-      wrong: ["Depeche Mode", "Erasure", "New Order"]
-    },
-    {
-      q: "Which 80s cartoon bears bounced here and there and everywhere?",
-      a: "Gummi Bears",
-      wrong: ["Care Bears", "Berenstain Bears", "Chicago Bears"]
-    }
-  ];
+  // variables  
+  var q1 = {
+    question: "What did the license plate say on the Ghostbusters' car?",
+    options: ["ECTO-1", "GHOST-1", "SLIME-1", "GBUST-1"],
+    flag: [true, false, false, false],
+    answer: "ECTO-1"
+  };
 
-  // Variables
-  var startScreen;
+  var q2 = {
+    question: "Who was the host of Double Dare?",
+    options: ["Alex Trebek", "Chuck Woolery", "Marc Summers", "Pat Sajak"],
+    flag: [false, false, true, false],
+    answer: "Marc Summers"
+  };
+
+  var q3 = {
+    question: "What was the name of the talking car in Knight Rider?",
+    options: ["CHAT", "KITT", "KATT", "KIFT"],
+    flag: [false, true, false, false],
+    answer: "KITT"
+  };
+
+  var q4 = {
+    question: "Which of these video games was not introduced in the 1980s?",
+    options: ["Frogger", "Digger", "Pac-Man", "Snake"],
+    flag: [false, false, false, true],
+    answer: "Snake"
+  };
+
+  var q5 = {
+    question: "In which video did Michael Jackson ask Prince to appear?",
+    options: ["Bad", "Billie Jean", "Beat It", "Smooth Criminal"],
+    flag: [true, false, false, false],
+    answer: "Bad"
+  };
+
+  var q6= {
+    question: "Who had a #1 hit with West End Girls?",
+    options: ["Depeche Mode", "Erasure", "The Pet Shop Boys", "New Order"],
+    flag: [false, false, true, false],
+    answer: "The Pet Shop Boys"
+  };
+
+  var q7 = {
+    question: "Which 80s cartoon bears bounced here and there and everywhere?",
+    options: ["Care Bears", "Gummi Bears", "Berenstain Bears", "Chicago Bears"], 
+    flag: [false, true, false, false],
+    answer: "Gummi Bears"
+  };
+
   var rightAnswer = 0;
   var wrongAnswer = 0;
-  var notAnswered = 0;
-  var questionIndex = 0;
-  var questionArea = $("#question-area");
+  var count = 0;
+  var intervalId;
+
+  // Timer
 
   // Functions
 
   function initScreen() {
-    $("#start-btn").on("click", function() {
-      askQuestion();
-    });
+    $("#start-btn").click(startQuiz);
     $(".question-panel").hide();
     $(".results-panel").hide();
   }
 
-  function askQuestion() {
-    $("#startbtn").hide();
-    $(".question-panel").show();
-    $(".results-panel").show();
+  function startQuiz() {
+    $("#ask-question").html(q1.question);
+    $("#button-01").text(q1.options[0]);
+    $("#button-02").text(q1.options[1]);
+    $("#button-03").text(q1.options[2]);
+    $("#button-04").text(q1.options[3]);
+    
 
-    if (questionIndex <= questions.length - 1) {
-      question.textContent = questions[questionIndex].q;
-    } else {
-      // go to game over screen
-      $("#ans-correct").textContent = rightAnswer;
-    }
+    $("#start-btn").hide();
+    $(".question-panel").show();
   }
 
+  function nextQuestion() {
+  
+  }
+
+  // calling functions to start game
   initScreen();
 });
