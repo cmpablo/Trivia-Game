@@ -18,16 +18,19 @@
     <div class="container">
 
         <div class="page-header">
-            <h1>80s POP CULTURE
-                <small>Trivia Game</small>
+            <h1>80s POP CULTURE TRIVIA GAME
             </h1>
+        </div>
+
+        <div class="intro-text">How well do you know your 80s trivia?</p>
+            <p>Take this quiz to find out!</p>
         </div>
 
         <button id="start-btn" type="button" class="btn btn-default btn-lg">Start Quiz
         </button>
 
         <div class="question-panel">
-            <div class="well">
+            <div class="well" id="my-timer">
                 <h2>Time Remaining:
                     <span id="time-remain">00:20</span>
                 </h2>
@@ -37,29 +40,34 @@
             <br>
             <div id="ans-choices" class="btn-group-vertical" role="group" aria-label="...">
 
-                <button id="button-01" type="button" class="btn btn-default"></button>
-                <button id="button-02" type="button" class="btn btn-default"></button>
-                <button id="button-03" type="button" class="btn btn-default"></button>
-                <button id="button-04" type="button" class="btn btn-default"></button>
+                <button id="button-01" type="button" class="btn btn-default ans-choice"></button>
+                <button id="button-02" type="button" class="btn btn-default ans-choice"></button>
+                <button id="button-03" type="button" class="btn btn-default ans-choice"></button>
+                <button id="button-04" type="button" class="btn btn-default ans-choice"></button>
+
+                <div class="results-panel">
+
+                    <h2>GAME OVER!</h2>
+
+                    <p>Correct:
+                        <span id="ans-correct"></span>
+                    </p>
+                    <p>Incorrect:
+                        <span id="ans-wrong"></span>
+                    </p>
+                    <p>Unanswered:
+                        <span id="ans-unanswer"></span>
+                    </p>
+
+                    <button id="replay-btn" type="button" class="btn btn-default btn-lg">Replay?
+                    </button>
+
+                </div>
 
             </div>
         </div>
-
-        <div class="results-panel">
-            <h5 id="result-text">Accompanying image text</h5>
-            <div id="result-img">
-                <!-- image for right/wrong/timesup screen goes here -->
-            </div>
-            <h2>You Answered</h2>
-            <h5># Correct:
-                <span id="ans-correct"></span>
-            </h5>
-            <h5># Wrong:
-                <span id="ans-wrong"></span>
-            </h5>
-        </div>
-
     </div>
+
 
 
     <!-- !!! JavaScript !!! -->
