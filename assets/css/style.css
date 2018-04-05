@@ -14,16 +14,37 @@ body {
   color: #fff;
 }
 
+.ans-choice {
+  font-size: 16px;
+}
+
 .page-header h1 {
-  font-size: 50px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 40px;
+  margin: 30px 0px 0px 0px;
+}
+
+.page-header h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  margin: 0px 0px 30px 0px;
+}
+
+.page-header {
+  padding: 0px;
 }
 
 .well h2 {
   font-size: 20px;
 }
 
+h3 {
+  font-size: 24px;
+}
+
 .results-panel h2 {
-  font-size: 30px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 18px;
 }
 
 #ans-correct,
@@ -40,7 +61,7 @@ body {
 .well {
   background-color: #000;
   padding: 5px;
-  margin: 30px 100px;
+  margin: 38px 150px 30px 150px;
   text-align: center;
   border-color: darkmagenta;
 }
@@ -52,6 +73,7 @@ body {
 }
 
 .intro-text {
+  padding: 9px;
   margin: 20px 0px 0px 0px;
   font-size: 20px;
 }
@@ -62,6 +84,10 @@ body {
 
 #replay-btn {
   margin: 15px;
+}
+
+.btn {
+  padding: 10px 50px;
 }
 
 .btn:focus,
