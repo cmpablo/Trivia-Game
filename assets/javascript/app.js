@@ -20,19 +20,16 @@ $(document).ready(function() {
       myTimer.time = 20;
       $("#time-remain").text("00:20");
     },
-
     start: function() {
       if (!clockRunning) {
         intervalId = setInterval(myTimer.count, 1000);
         clockRunning = true;
       }
     },
-
     stop: function() {
       clearInterval(intervalId);
       clockRunning = false;
     },
-
     count: function() {
       myTimer.time--;
       var converted = myTimer.timeConverter(myTimer.time);
@@ -52,7 +49,6 @@ $(document).ready(function() {
         }
       }
     },
-
     timeConverter: function(t) {
       var minutes = Math.floor(t / 60);
       var seconds = t - minutes * 60;
@@ -67,6 +63,7 @@ $(document).ready(function() {
       return minutes + ":" + seconds;
     }
   };
+
   // Questions
   var q1 = {
     question: "What did the license plate say on the Ghostbusters' car?",
@@ -114,26 +111,38 @@ $(document).ready(function() {
     question: "Which sci-fi sitcom star like to eat cats?",
     options: ["Mork", "Vicki", "Alf", "Evie"],
     flag: [false, false, true, false]
-  }
+  };
 
   var q9 = {
-    question: "Which all-girl group walked like an Egyptian over an eternal flame?",
+    question:
+      "Which all-girl group walked like an Egyptian over an eternal flame?",
     options: ["Bananarama", "En Vogue", "The Go-Gos", "The Bangles"],
     flag: [false, false, false, true]
-  }
+  };
 
   var q10 = {
     question: "Which game show featured the Whammy?",
-    options: ["Pyramid", "Press Your Luck", "Family Feud", "Sale of the Century"],
+    options: [
+      "Pyramid",
+      "Press Your Luck",
+      "Family Feud",
+      "Sale of the Century"
+    ],
     flag: [false, true, false, false]
-  }
+  };
 
   var q11 = {
     question: "Which of these toys made its debut in the 80s?",
-    options: ["Strawberry Shortcake", "G.I. Joe", "Suzy Homemaker", "Troll Doll"],
+    options: [
+      "Strawberry Shortcake",
+      "G.I. Joe",
+      "Suzy Homemaker",
+      "Troll Doll"
+    ],
     flag: [true, false, false, false]
-  }
+  };
 
+  // Functions
   // displays question
   var questionArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11];
 
@@ -151,6 +160,7 @@ $(document).ready(function() {
     button04.text(questionArray[questionSelect].options[3]);
   }
 
+  // Start game
   function startGame() {
     index = 0;
     $(".question-panel").hide();
@@ -161,6 +171,7 @@ $(document).ready(function() {
     });
   }
 
+  // Reset game
   function resetGame() {
     index = 0;
     rightAnswer = 0;
@@ -174,6 +185,7 @@ $(document).ready(function() {
     $(".intro-text").hide();
   }
 
+  // Score keepers
   function answerRight() {
     rightAnswer++;
   }
@@ -186,6 +198,7 @@ $(document).ready(function() {
     unanswered++;
   }
 
+  // Gameover
   function gameOver() {
     $("#ask-question").empty();
     $(".results-panel").show();
@@ -199,7 +212,7 @@ $(document).ready(function() {
     });
   }
 
-  // Check answers
+  // Declaring button selections
   $(".ans-choice").on("click", function() {
     if (this.id === "button-01") {
       var selectedAnswer = "1";
@@ -211,6 +224,7 @@ $(document).ready(function() {
       selectedAnswer = "4";
     }
 
+    // Conditionals for deciding what's a right answer or wrong answer
     if (selectedAnswer === "1" && questionArray[index].flag[0] == true) {
       answerRight();
     } else if (selectedAnswer === "1") {
@@ -235,6 +249,7 @@ $(document).ready(function() {
       answerWrong();
     }
 
+    // init
     index++;
     if (index < questionArray.length) {
       loadQuestion(index);
@@ -244,6 +259,5 @@ $(document).ready(function() {
       gameOver();
     }
   });
-
   startGame();
 });
